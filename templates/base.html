@@ -6,6 +6,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+<!--    Подключили стили - css/styles.css --> 
+<link type="text/css" href="{{ url_for('static', filename='css/styles.css')}}" rel="stylesheet" />
 <!--    Создали именованный блок title, в именованном блоке происходит проверка-->
 {% block title -%}
 {% if title %}
@@ -22,12 +24,14 @@
         {%- block mainmenu -%}
 
 <!--Список-->
-<ul>
+<ul class="mainmenu">
         {% for m in menu -%}
-<li>{{m}}</li>
+<li><a href="{{m.url}}">{{m.name}}</a></li>
         {% endfor -%}
 </ul>
         {% endblock mainmenu -%}
+<div class="clear"></div>
+<div class="content">
         {% if title -%}
 <!--tag h1-->
 <h1>{{title}}</h1>
@@ -35,5 +39,6 @@
 <h1>About Flask</h1>
         {% endif -%}
 {% endblock -%}
+</div>
 </body>
 </html>
